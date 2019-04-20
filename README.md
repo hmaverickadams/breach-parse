@@ -10,4 +10,5 @@ Store breach.parse.sh in /opt/breach-parse
 
 # To-Do (Future improvements)
 Remove hardcoded directories
+
 Create auto-installer for alias
