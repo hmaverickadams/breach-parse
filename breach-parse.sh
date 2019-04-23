@@ -32,7 +32,7 @@ else
         fi
     else
         if [ ! -d "${breachDataLocation}" ]; then
-            echo "Could not find a direcotry at ${breachDataLocation}"
+            echo "Could not find a directory at ${breachDataLocation}"
             echo 'Put the breached password list there or specify the location of the BreachCompilation/data as the third argument'
             echo 'Example: ./breach-parse.sh @gmail.com gmail.txt "~/Downloads/BreachCompilation/data"'
             exit 1
