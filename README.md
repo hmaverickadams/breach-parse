@@ -1,14 +1,16 @@
 # breach-parse
 A tool for parsing breached passwords
 
-# Installation
+### Installation
+
 Download breached password list from magnet located here: https://github.com/philipperemy/tensorflow-1.4-billion-password-analysis
 
-Store downloaded list in /opt/breach-parse
+If you don't store the password list (BreachCompilation) in `/opt/breach-parse`, specify the location like: 
 
-Store breach.parse.sh in /opt/breach-parse
+`./breach-parse.sh @gmail.com gmail.txt "~/Downloads/BreachCompilation/data"`
 
-# To-Do (Future improvements)
-Remove hardcoded directories
+Run `./breach-parse.sh` for instructions
+
+### To-Do (Future improvements)
 
 Create auto-installer for alias
