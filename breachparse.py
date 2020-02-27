@@ -12,7 +12,7 @@ def progressBar(fileCount, totalFiles):
 	progress = int((fileCount * 100 / totalFiles * 100) / 100)
 	done = int((progress * 4) / 10)
 	left = 40 - done
-	print(" Progress: ["+"#"*progress+left*"-"+"]", end="\r")
+	print(" Progress: ["+"#"*progress+left*"-"+ "]", end="\r")
 
 if(len(sys.argv) < 3):
 	print("Breach-Parse v2: A Breached Domain Parsing Tool by Heath Adams and Clark Kevin")
@@ -38,7 +38,7 @@ if(len(sys.argv) == 4 ):
 	if(os.path.isdir(sys.argv[3])):
 		breachDataLocation=sys.argv[3]
 	else:
-		print("Could not find a directory at "+breachDataLocation)
+		print("Could not find a directory at "+sys.argv[3])
 		print('Pass the BreachCompilation/data directory as the third argument')
 		print('Example: ./breachparse.py @gmail.com gmail.txt "~/Downloads/BreachCompilation/data"')
 		exit(1)
@@ -58,7 +58,9 @@ passwords = fbname+"-passwords.txt"
 
 totalFiles = countFiles(breachDataLocation)
 fileCount = 0
-output = open(master, "w")
+masterfd = open(master, "w")
+usersfd = open(users, "w")
+passwordsfd = open(passwords, "w")
 
 for osdir, subdirs, files in os.walk(breachDataLocation):
 	for f in files:
@@ -67,7 +69,9 @@ for osdir, subdirs, files in os.walk(breachDataLocation):
 			progressBar(fileCount, totalFiles)
 			for line in fd:
 				if(sys.argv[1] in line):
-					output.write(line)
+					masterfd.write(line)
+					usersfd.write(line.split(":")[0]+"\n")
+					passwordsfd.write(line.split(":")[1])
 
 print("")
 print("Files written to the current directory:")
