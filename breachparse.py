@@ -58,6 +58,7 @@ passwords = fbname+"-passwords.txt"
 
 totalFiles = countFiles(breachDataLocation)
 fileCount = 0
+domains = sys.argv[1].split('|')
 masterfd = open(master, "w")
 usersfd = open(users, "w")
 passwordsfd = open(passwords, "w")
@@ -68,10 +69,11 @@ for osdir, subdirs, files in os.walk(breachDataLocation):
 			fileCount += 1
 			progressBar(fileCount, totalFiles)
 			for line in fd:
-				if(sys.argv[1] in line):
-					masterfd.write(line)
-					usersfd.write(line.split(":")[0]+"\n")
-					passwordsfd.write(line.split(":")[1])
+				for domain in domains:
+					if(domain in line):
+						masterfd.write(line)
+						usersfd.write(line.split(":")[0]+"\n")
+						passwordsfd.write(line.split(":")[1])
 
 print("")
 print("Files written to the current directory:")
