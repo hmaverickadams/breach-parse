@@ -71,9 +71,16 @@ for osdir, subdirs, files in os.walk(breachDataLocation):
 			for line in fd:
 				for domain in domains:
 					if(domain in line):
-						masterfd.write(line)
-						usersfd.write(line.split(":")[0]+"\n")
-						passwordsfd.write(line.split(":")[1])
+						try:
+							masterfd.write(line)
+							usersfd.write(line.split(":")[0]+"\n")
+							passwordsfd.write(line.split(":")[1:])
+						except:
+							# This usually means the delimeter was not a colon. Could be a semicolon or pipe in some cases
+							# Just have the script put the whole line in the master file and let the operator sort it out
+							pass # So many delimeters, not enough time
+
+
 
 print("")
 print("Files written to the current directory:")
