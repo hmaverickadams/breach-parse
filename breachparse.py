@@ -74,7 +74,7 @@ for osdir, subdirs, files in os.walk(breachDataLocation):
 						try:
 							masterfd.write(line)
 							usersfd.write(line.split(":")[0]+"\n")
-							passwordsfd.write(''.join(line.split(":")[1:]))
+							passwordsfd.write(line[line.find(":")+1:])
 						except:
 							# This usually means the delimeter was not a colon. Could be a semicolon or pipe in some cases
 							# Just have the script put the whole line in the master file and let the operator sort it out
