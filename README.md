@@ -14,3 +14,7 @@ Run `./breach-parse.sh` for instructions
 ### To-Do (Future improvements)
 
 Create auto-installer for alias
+
+### Feedback
+
+Suggestions are always welcome, thankyou!
