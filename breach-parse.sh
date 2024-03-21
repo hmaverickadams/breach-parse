@@ -67,7 +67,7 @@ else
 
     # grep for passwords
     find "$breachDataLocation" -type f -not -path '*/\.*' -print0 | while read -d $'\0' file; do
-        grep -a -E "$1" "$file" >>$master
+        grep -i -a -E "$1" "$file" >>$master
         ((++file_Count))
         ProgressBar ${number} ${total_Files}
 
